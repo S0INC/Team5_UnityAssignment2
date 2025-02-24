@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class SpawnManagerX : MonoBehaviour
 {
@@ -59,6 +61,7 @@ public class SpawnManagerX : MonoBehaviour
             enemyX.playerGoal = playerGoal;
             // refernces the script so we can use it in the EnemyX script
             enemyX.spawnManagerX = this;
+            // referces so we can get the text element to the enemy Prefab
         }
 
         waveCount++;

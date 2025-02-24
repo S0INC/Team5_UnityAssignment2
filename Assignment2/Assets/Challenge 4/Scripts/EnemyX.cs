@@ -30,10 +30,12 @@ public class EnemyX : MonoBehaviour
         // If enemy collides with either goal, destroy it
         if (other.gameObject.name == "Enemy Goal")
         {
+            ScoreManager.instance.addPointP1();
             Destroy(gameObject);
         } 
         else if (other.gameObject.name == "Player Goal")
         {
+            ScoreManager.instance.addPointP2();
             Destroy(gameObject);
         }
 
