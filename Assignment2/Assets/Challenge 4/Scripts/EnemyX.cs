@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyX : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class EnemyX : MonoBehaviour
     private Rigidbody enemyRb;
     public GameObject playerGoal;
     public SpawnManagerX spawnManagerX;
+    public Renderer rend;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
     }
 
     // Update is called once per frame
@@ -20,8 +24,8 @@ public class EnemyX : MonoBehaviour
     {
         // Set enemy direction towards player goal and move there
         // Increases the speed based on the wave number from the SpawnManagerX script
-        Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
-        enemyRb.AddForce(lookDirection * speed * Time.deltaTime * (spawnManagerX.waveCount * 0.4f));
+        // Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
+        // enemyRb.AddForce(lookDirection * speed * Time.deltaTime * (spawnManagerX.waveCount * 0.4f));
 
     }
 
@@ -31,14 +35,28 @@ public class EnemyX : MonoBehaviour
         if (other.gameObject.name == "Enemy Goal")
         {
             ScoreManager.instance.addPointP1();
-            Destroy(gameObject);
+            rend.enabled = false;
+            CounterDownTimer.instance.PauseTimer();
+            DOTween.Play("move_textIn");
+            DOTween.Play("move_goalOut");
+            CameraShake.instance.Shake();
+            StartCoroutine(goalExplosion());
         } 
         else if (other.gameObject.name == "Player Goal")
         {
             ScoreManager.instance.addPointP2();
-            Destroy(gameObject);
+            rend.enabled = false;
+            CounterDownTimer.instance.PauseTimer();
+            DOTween.Play("move_textIn");
+            DOTween.Play("move_goalOut");
+            CameraShake.instance.Shake();
+            StartCoroutine(goalExplosion());
         }
 
     }
 
+    IEnumerator goalExplosion(){
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
 }
