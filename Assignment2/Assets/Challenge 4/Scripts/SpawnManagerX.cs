@@ -27,7 +27,7 @@ public class SpawnManagerX : MonoBehaviour
 
         if (enemyCount == 0)
         {
-            SpawnEnemyWave(waveCount);
+            SpawnEnemyWave();
         }
 
     }
@@ -37,11 +37,11 @@ public class SpawnManagerX : MonoBehaviour
     {
         float xPos = Random.Range(-spawnRangeX, spawnRangeX);
         float zPos = Random.Range(spawnZMin, spawnZMax);
-        return new Vector3(xPos, 0, zPos);
+        return new Vector3(xPos, 1, zPos);
     }
 
 
-    void SpawnEnemyWave(int enemiesToSpawn)
+    void SpawnEnemyWave()
     {
         Vector3 powerupSpawnOffset = new Vector3(0, 0, -15); // make powerups spawn at player end
 
@@ -52,9 +52,7 @@ public class SpawnManagerX : MonoBehaviour
         }
 
         // Spawn number of enemy balls based on wave number
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            var enemyObject = Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            var enemyObject = Instantiate(enemyPrefab, new Vector3(0,0,0), enemyPrefab.transform.rotation);
             // gets the EnemyX script           
             EnemyX enemyX = enemyObject.GetComponent<EnemyX>();
             // refrences the player goal object so we can reference it EnemyX
@@ -62,7 +60,6 @@ public class SpawnManagerX : MonoBehaviour
             // refernces the script so we can use it in the EnemyX script
             enemyX.spawnManagerX = this;
             // referces so we can get the text element to the enemy Prefab
-        }
 
         waveCount++;
         ResetPlayerPosition(); // put player back at start
@@ -72,7 +69,7 @@ public class SpawnManagerX : MonoBehaviour
     // Move player back to position in front of own goal
     void ResetPlayerPosition ()
     {
-        player.transform.position = new Vector3(0, 1, -7);
+        player.transform.position = GenerateSpawnPosition();
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
