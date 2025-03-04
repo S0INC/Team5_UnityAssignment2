@@ -9,6 +9,7 @@ public class CounterDownTimer : MonoBehaviour
     public bool TimerOn = false;
     public TextMeshProUGUI TimerText;
     public static CounterDownTimer instance;
+    public GameObject EndMenu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +28,7 @@ public class CounterDownTimer : MonoBehaviour
             else{
                 TimeLeft = 0;
                 TimerOn = false;
+                EndMenu.SetActive(true);
             }
         }
     }
