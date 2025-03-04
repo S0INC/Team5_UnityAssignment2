@@ -16,6 +16,8 @@ public class SpawnManagerX : MonoBehaviour
     public int enemyCount;
     public int waveCount = 1;
     public GameObject playerGoal;
+    public ParticleSystem goalExplosion;
+    public ParticleSystem ghostExplosion;
 
 
     public GameObject player; 
@@ -60,7 +62,8 @@ public class SpawnManagerX : MonoBehaviour
             // refernces the script so we can use it in the EnemyX script
             enemyX.spawnManagerX = this;
             // referces so we can get the text element to the enemy Prefab
-
+            enemyX.goalExplosionFX = goalExplosion;
+            enemyX.ghostExplosionFX = ghostExplosion;
         waveCount++;
         ResetPlayerPosition(); // put player back at start
 
