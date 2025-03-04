@@ -10,6 +10,8 @@ public class EnemyX : MonoBehaviour
     public GameObject playerGoal;
     public SpawnManagerX spawnManagerX;
     public Renderer rend;
+    public ParticleSystem goalExplosionFX;
+    public ParticleSystem ghostExplosionFX;
 
     // Start is called before the first frame update
     void Start()
@@ -37,18 +39,16 @@ public class EnemyX : MonoBehaviour
             ScoreManager.instance.addPointP1();
             rend.enabled = false;
             CounterDownTimer.instance.PauseTimer();
-            DOTween.Play("move_textIn");
-            DOTween.Play("move_goalOut");
+            DOTween.Restart("move_textIn");
             CameraShake.instance.Shake();
-            StartCoroutine(goalExplosion());
+            StartCoroutine(ghostExplosion());
         } 
         else if (other.gameObject.name == "Player Goal")
         {
             ScoreManager.instance.addPointP2();
             rend.enabled = false;
             CounterDownTimer.instance.PauseTimer();
-            DOTween.Play("move_textIn");
-            DOTween.Play("move_goalOut");
+            DOTween.Restart("move_textIn");
             CameraShake.instance.Shake();
             StartCoroutine(goalExplosion());
         }
@@ -56,6 +56,14 @@ public class EnemyX : MonoBehaviour
     }
 
     IEnumerator goalExplosion(){
+        goalExplosionFX.transform.position = new Vector3(gameObject.transform.position.x, 0 , gameObject.transform.position.z);
+        goalExplosionFX.Play();
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
+    IEnumerator ghostExplosion(){
+        ghostExplosionFX.transform.position = new Vector3(gameObject.transform.position.x, 0 , gameObject.transform.position.z);
+        ghostExplosionFX.Play();
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
