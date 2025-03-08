@@ -21,7 +21,6 @@ public class SpawnManagerX : MonoBehaviour
 
 
     public GameObject player1; 
-    public GameObject player2;
 
     // Update is called once per frame
     void Update()
@@ -76,11 +75,6 @@ public class SpawnManagerX : MonoBehaviour
         player1.transform.position = GenerateSpawnPosition() + new Vector3(0,0,-50);
         player1.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         player1.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-
-        player2.transform.position = GenerateSpawnPosition();
-        player2.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
-        player2.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-
     }
 
 }
