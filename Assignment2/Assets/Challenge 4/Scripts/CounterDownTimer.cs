@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class CounterDownTimer : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CounterDownTimer : MonoBehaviour
     public TextMeshProUGUI TimerText;
     public static CounterDownTimer instance;
     public GameObject EndMenu;
+    public GameObject firstend;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +31,8 @@ public class CounterDownTimer : MonoBehaviour
                 TimeLeft = 0;
                 TimerOn = false;
                 EndMenu.SetActive(true);
+                Time.timeScale = 0f;
+                EventSystem.current.SetSelectedGameObject(firstend);
             }
         }
     }

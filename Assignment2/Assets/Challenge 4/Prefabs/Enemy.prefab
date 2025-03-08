@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8701247569819616896}
   - component: {fileID: 8081716314530146444}
   - component: {fileID: 2875967790344232780}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -151,3 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   playerGoal: {fileID: 0}
+  spawnManagerX: {fileID: 0}
+  rend: {fileID: 0}
+  goalExplosionFX: {fileID: 0}
+  ghostExplosionFX: {fileID: 0}
