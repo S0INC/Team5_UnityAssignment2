@@ -19,9 +19,6 @@ public class SpawnManagerX : MonoBehaviour
     public ParticleSystem goalExplosion;
     public ParticleSystem ghostExplosion;
 
-
-    public GameObject player1; 
-
     // Update is called once per frame
     void Update()
     {
@@ -72,9 +69,11 @@ public class SpawnManagerX : MonoBehaviour
     // Move player back to position in front of own goal
     void ResetPlayerPosition ()
     {
-        player1.transform.position = GenerateSpawnPosition() + new Vector3(0,0,-50);
-        player1.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
-        player1.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        for (int i = 0; i < Lists.instance.players.Count; i++){
+            Lists.instance.players[i].transform.position = Lists.instance.startingPoints[i].position;
+            Lists.instance.players[i].GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            Lists.instance.players[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        }
     }
 
 }

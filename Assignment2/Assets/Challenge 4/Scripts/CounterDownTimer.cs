@@ -15,7 +15,7 @@ public class CounterDownTimer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        TimerOn = true;
+        TimerOn = false;
         instance = this;
     }
 
@@ -53,5 +53,9 @@ public class CounterDownTimer : MonoBehaviour
     public void PauseTimer()
     {
         StartCoroutine(nameof(PauseTimerCoroutine));
+    }
+    public void StartTimer()
+    {
+        TimerOn = true;
     }
 }

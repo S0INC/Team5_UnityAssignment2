@@ -37,7 +37,6 @@ Transform:
   m_Children:
   - {fileID: 9029443493970255070}
   - {fileID: 6682693344451704744}
-  - {fileID: 997429350632693428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3259751828876482677
@@ -270,6 +269,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 39ee6447-4c45-4b8c-a8f0-5ce4f244bf15
     m_ActionName: 'UI/pause[/DualSenseGamepadHID/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ef54c8a3-e4b0-40e1-baf2-c967f7171f12
+    m_ActionName: 'Player/join[/DualSenseGamepadHID1/select,/DualSenseGamepadHID/select]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -296,7 +299,7 @@ MonoBehaviour:
   powerUpDuration: 5
   isPlayer1: 1
   rotateCameraX: {fileID: 1789360859187989761}
-  pauseMenu: {fileID: 7580832770554600378}
+  pauseMenu: {fileID: 0}
   powerUpIndicator: {fileID: 4347554740179398697}
   playerCamera: {fileID: 7827831925371991352}
 --- !u!1 &4093133748053754545
@@ -5174,7 +5177,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7471285248809135859}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &6597694619200187824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5313,52 +5316,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!1 &8702227491596738183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 997429350632693428}
-  - component: {fileID: 7580832770554600378}
-  m_Layer: 0
-  m_Name: PauseMenuManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &997429350632693428
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702227491596738183}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 358.98486, y: 79.76825, z: 16.405056}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 946129847914685422}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7580832770554600378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702227491596738183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2c27714e6b6ec4fb187aae481dbcae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
-  checkpause: 0
 --- !u!1001 &4839485615794730821
 PrefabInstance:
   m_ObjectHideFlags: 0
