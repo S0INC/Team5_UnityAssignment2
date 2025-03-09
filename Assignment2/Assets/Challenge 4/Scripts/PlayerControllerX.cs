@@ -25,6 +25,12 @@ public class PlayerControllerX : MonoBehaviour
     public RotateCameraX rotateCameraX;
     public ParticleSystem powerUpIndicator;
     public Camera playerCamera;
+    GameAudio gameAudio;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        gameAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<GameAudio>();
+    }
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -79,6 +85,7 @@ public class PlayerControllerX : MonoBehaviour
         movementInput = context.ReadValue<Vector2>();
     }
     public void OnBoost(InputAction.CallbackContext context){
+        gameAudio.PlaySFX(gameAudio.buttonHover);
         boosted = context.action.triggered;
     }
     public void Onrotate(InputAction.CallbackContext context){
