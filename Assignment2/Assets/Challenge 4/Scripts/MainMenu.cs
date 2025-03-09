@@ -12,23 +12,20 @@ public class MainMenu : MonoBehaviour
     public GameObject mainmenu;
     public GameObject firstmain;
     public GameObject firsthow;
+    MainAudio mainAudio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        mainAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<MainAudio>();
     }
     public void StartNew()
     {
+        mainAudio.PlaySFX(mainAudio.ButtonSelect);
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
     public void Exit(){
+        mainAudio.PlaySFX(mainAudio.ButtonSelect);
         #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
         #else
@@ -36,11 +33,13 @@ public class MainMenu : MonoBehaviour
         #endif
     }
     public void HowTO(){
+        mainAudio.PlaySFX(mainAudio.ButtonSelect);
         howtoMenu.SetActive(true);
         mainmenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(firsthow);
     }
     public void HowTOreturn(){
+        mainAudio.PlaySFX(mainAudio.ButtonSelect);
         howtoMenu.SetActive(false);
         mainmenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(firstmain);

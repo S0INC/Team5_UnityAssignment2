@@ -23,7 +23,6 @@ public class PlayerControllerX : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
     private bool boosted = false;
     public RotateCameraX rotateCameraX;
-    public PauseMenu pauseMenu;
     public ParticleSystem powerUpIndicator;
     public Camera playerCamera;
     void Start()
@@ -89,7 +88,7 @@ public class PlayerControllerX : MonoBehaviour
     {
         if (context.started)
         {
-            pauseMenu.checkpause = true;
+            PauseMenu.instance.checkpause = true;
         }
     }
 

@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 public class ToggelOnPlayerJoin : MonoBehaviour
 {
     private  PlayerInputManager playerInputManager;
-    public TMP_Text jointext;
     private void Awake()
     {
         playerInputManager = FindFirstObjectByType<PlayerInputManager>();
@@ -20,6 +20,10 @@ public class ToggelOnPlayerJoin : MonoBehaviour
     }
     private void ToggleThis(PlayerInput player){
         this.gameObject.SetActive(false);
-        jointext.gameObject.SetActive(false);
+        PauseMenu.instance.ClearText();
+        CounterDownTimer.instance.StartTimer();
+        Lists.instance.players.Add(player);
+        player.transform.position = Lists.instance.startingPoints[Lists.instance.players.Count - 1].position;
+        player.transform.rotation = Lists.instance.startingPoints[Lists.instance.players.Count - 1].transform.rotation;
     }
 }
